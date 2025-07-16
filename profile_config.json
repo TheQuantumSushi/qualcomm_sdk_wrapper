@@ -1,0 +1,232 @@
+{
+  "profiling_config": {
+    "description": "QNN Profiling Configuration for Comprehensive Metrics Extraction",
+    "version": "1.0.0",
+    
+    "default_settings": {
+      "profiling_level": "detailed",
+      "num_inferences": 10,
+      "perf_profile": "balanced",
+      "enable_profiling": true,
+      "verbose": false
+    },
+    
+    "backend_configurations": {
+      "cpu": {
+        "profiling_level": "detailed",
+        "perf_profile": "balanced",
+        "num_inferences": 20,
+        "additional_flags": [
+          "--log_level=verbose"
+        ],
+        "recommended_for": "Detailed per-layer analysis and CPU optimization"
+      },
+      
+      "gpu": {
+        "profiling_level": "backend",
+        "perf_profile": "burst",
+        "num_inferences": 15,
+        "additional_flags": [
+          "--log_level=verbose",
+          "--enable_debug_logs"
+        ],
+        "recommended_for": "GPU memory analysis and Adreno optimization"
+      },
+      
+      "htp": {
+        "profiling_level": "detailed",
+        "perf_profile": "burst",
+        "htp_performance_mode": "burst", 
+        "vtcm_mb": 8,
+        "num_inferences": 50,
+        "additional_flags": [
+          "--log_level=verbose",
+          "--enable_htp_profiling"
+        ],
+        "recommended_for": "NPU optimization and power analysis"
+      }
+    },
+    
+    "performance_profiles": {
+      "quick_test": {
+        "description": "Fast profiling for development testing",
+        "profiling_level": "basic",
+        "num_inferences": 5,
+        "perf_profile": "balanced"
+      },
+      
+      "comprehensive": {
+        "description": "Detailed profiling for optimization",
+        "profiling_level": "detailed", 
+        "num_inferences": 100,
+        "perf_profile": "burst"
+      },
+      
+      "production_benchmark": {
+        "description": "Production-like profiling",
+        "profiling_level": "backend",
+        "num_inferences": 50,
+        "perf_profile": "sustained_high_performance"
+      },
+      
+      "power_analysis": {
+        "description": "Power efficiency analysis",
+        "profiling_level": "detailed",
+        "num_inferences": 30,
+        "perf_profile": "power_saver"
+      }
+    },
+    
+    "rubik_pi_optimized": {
+      "description": "Optimized settings for Rubik Pi 3 (QCS6490)",
+      "htp": {
+        "htp_performance_mode": "burst",
+        "vtcm_mb": 8,
+        "profiling_level": "detailed",
+        "num_inferences": 30,
+        "perf_profile": "burst",
+        "architecture": "v73"
+      },
+      "cpu": {
+        "profiling_level": "detailed", 
+        "num_inferences": 20,
+        "perf_profile": "balanced"
+      },
+      "gpu": {
+        "profiling_level": "backend",
+        "num_inferences": 15,
+        "perf_profile": "burst"
+      }
+    }
+  },
+  
+  "analysis_config": {
+    "output_formats": {
+      "csv": true,
+      "json": true,
+      "pdf_report": true,
+      "interactive_dashboard": true
+    },
+    
+    "visualization_settings": {
+      "create_static_plots": true,
+      "create_interactive_plots": true,
+      "plot_style": "seaborn-whitegrid",
+      "color_palette": "husl",
+      "figure_size": [12, 8],
+      "dpi": 300
+    },
+    
+    "metrics_to_extract": {
+      "timing_metrics": [
+        "init_time_us",
+        "compose_time_us", 
+        "finalize_time_us",
+        "execute_time_us",
+        "min_execute_time_us",
+        "max_execute_time_us",
+        "backend_execute_time_us",
+        "throughput_ips"
+      ],
+      
+      "memory_metrics": [
+        "vtcm_usage_mb",
+        "system_memory_mb",
+        "gpu_memory_mb",
+        "peak_memory_mb",
+        "model_size_mb"
+      ],
+      
+      "system_metrics": [
+        "cpu_cores",
+        "cpu_freq_mhz",
+        "total_ram_mb",
+        "device_name",
+        "os_version",
+        "qnn_version"
+      ]
+    },
+    
+    "comparison_analysis": {
+      "enable_backend_comparison": true,
+      "enable_model_comparison": true,
+      "enable_trend_analysis": true,
+      "statistical_analysis": true
+    }
+  },
+  
+  "device_specific": {
+    "rubik_pi": {
+      "device_id_patterns": ["QCS6490", "Rubik"],
+      "architecture": "aarch64-oe-linux-gcc11.2",
+      "npu_architecture": "v73", 
+      "recommended_vtcm_mb": 8,
+      "max_performance_mode": "burst",
+      "thermal_considerations": {
+        "enable_thermal_monitoring": true,
+        "cooldown_between_runs": 5
+      }
+    },
+    
+    "generic_qualcomm": {
+      "device_id_patterns": ["Qualcomm", "Snapdragon"],
+      "architecture": "aarch64-oe-linux-gcc11.2",
+      "recommended_vtcm_mb": 4,
+      "max_performance_mode": "balanced"
+    }
+  },
+  
+  "automation_settings": {
+    "auto_detect_device": true,
+    "auto_select_optimal_settings": true,
+    "generate_comparison_reports": true,
+    "export_to_cloud": false,
+    "notification_settings": {
+      "enable_completion_notification": false,
+      "email_results": false
+    }
+  },
+  
+  "advanced_options": {
+    "enable_etw_profiling": false,
+    "multi_context_analysis": false,
+    "layer_wise_profiling": true,
+    "memory_leak_detection": true,
+    "performance_regression_detection": true,
+    "custom_profiling_hooks": []
+  },
+  
+  "troubleshooting": {
+    "common_issues": {
+      "no_profiling_data": {
+        "description": "Profiling logs not generated",
+        "solutions": [
+          "Ensure profiling_level is not 'off'",
+          "Check QNN SDK version compatibility", 
+          "Verify backend supports profiling",
+          "Check log_level is set to verbose"
+        ]
+      },
+      
+      "low_performance": {
+        "description": "Unexpectedly slow inference times",
+        "solutions": [
+          "Check thermal throttling",
+          "Verify model is quantized for HTP",
+          "Ensure VTCM allocation is optimal",
+          "Check for memory fragmentation"
+        ]
+      },
+      
+      "memory_issues": {
+        "description": "Memory allocation failures",
+        "solutions": [
+          "Reduce VTCM allocation",
+          "Check available system memory",
+          "Optimize model size",
+          "Enable memory debugging"
+        ]
+      }
+    }
+  }
+}
