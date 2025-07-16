@@ -1,0 +1,14 @@
+{
+  "environment_variables": {
+    "SNPE_ROOT": "$QUALCOMM_ROOT/environment/sdks/qnn/qairt/2.35.0.250530",
+    "QNN_ROOT": "$QUALCOMM_ROOT/environment/sdks/qnn/qairt/2.35.0.250530",
+    "ESDK_ROOT": "$QUALCOMM_ROOT/environment/sdks/qcom_wayland_sdk"
+  },
+  "names": {
+    "project": "sncf_rail_defect",
+    "venv": "qai_hub"
+  },
+  "variables": {
+    "api_token": "ENTER_YOUR_AI_HUB_API_TOKEN_HERE"
+  }
+}
