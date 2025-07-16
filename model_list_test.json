@@ -1,0 +1,28 @@
+{
+  "models": [
+    {
+      "name": "5nu_P for htp, quantized",
+      "file_path": "5nu_P/5nu_P_quantized_htp.so",
+      "backend": "htp",
+      "run_count": 1,
+      "perf_profile": "balanced",
+      "timeout": 300
+    },
+    {
+      "name": "8n_P for htp, quantized",
+      "file_path": "8n_P/8n_P_quantized_htp.so",
+      "backend": "htp",
+      "run_count": 1,
+      "perf_profile": "balanced",
+      "timeout": 300
+    },
+    {
+      "name": "11n_P for htp, quantized",
+      "file_path": "11n_P/11n_P_quantized_htp.so",
+      "backend": "htp",
+      "run_count": 1,
+      "perf_profile": "balanced",
+      "timeout": 300
+    }
+  ]
+}
